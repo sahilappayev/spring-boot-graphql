@@ -1,0 +1,12 @@
+type Mutation {
+    createUser(requestDto: UserRequestDto): UserResponseDto
+}
+
+scalar Date
+
+input UserRequestDto {
+    name: String!
+    surname: String
+    birthdate: Date
+}
+

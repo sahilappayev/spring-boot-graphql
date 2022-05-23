@@ -1,0 +1,21 @@
+type Query {
+    userByName(name: String): UserResponseDto
+    userById(id: ID): UserResponseDto
+    usersByName(name: String): [UserResponseDto]
+}
+
+type UserResponseDto {
+    id: ID!
+    name: String
+    surname: String
+    fullName: String
+    birthdate: Date
+    laptops(name: String): [LaptopResponseDto]
+}
+
+type LaptopResponseDto {
+    id: ID!
+    name: String!
+    user: UserResponseDto
+}
+
