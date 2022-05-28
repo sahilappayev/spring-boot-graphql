@@ -22,3 +22,5 @@ graphql:
     enabled: true
     cdn:
       enabled: true
+  servlet:
+    exception-handlers-enabled: true
