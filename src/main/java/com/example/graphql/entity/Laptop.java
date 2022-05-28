@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 public class Laptop extends BaseEntity {
 
     private String name;
+    private float price;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")

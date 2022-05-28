@@ -1,9 +1,7 @@
 package com.example.graphql.api;
 
 import com.example.graphql.dto.UserResponseDto;
-import com.example.graphql.entity.User;
-import com.example.graphql.mapper.UserMapper;
-import com.example.graphql.repository.UserRepository;
+import com.example.graphql.service.UserService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,20 +16,22 @@ import java.util.UUID;
 @Component
 public class UserQuery implements GraphQLQueryResolver {
 
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserService userService;
 
     public UserResponseDto getUserByName(String name) {
-        return userMapper.entityToDto(userRepository.findByName(name));
+        return userService.getByName(name);
     }
 
     public List<UserResponseDto> getUsersByName(String name) {
-        return userMapper.entityToDtoList(userRepository.getAllByNameLike(name));
+        return userService.getAllByName(name);
+    }
+
+    public List<UserResponseDto> getUsers() {
+        return userService.getAll();
     }
 
     public UserResponseDto getUserById(UUID id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found!"));
-        return userMapper.entityToDto(user);
+        return userService.getById(id);
     }
 
 }

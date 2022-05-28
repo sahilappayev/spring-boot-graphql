@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ScalarConfig {
-
-
     @Bean
     public GraphQLScalarType date(){
         return ExtendedScalars.Date;

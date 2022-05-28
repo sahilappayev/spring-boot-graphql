@@ -2,11 +2,12 @@ package com.example.graphql.api;
 
 import com.example.graphql.dto.UserRequestDto;
 import com.example.graphql.dto.UserResponseDto;
-import com.example.graphql.mapper.UserMapper;
-import com.example.graphql.repository.UserRepository;
+import com.example.graphql.service.UserService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 /**
  * Like Create, Update and Delete
@@ -15,14 +16,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMutation implements GraphQLMutationResolver {
 
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserService userService;
 
     public UserResponseDto createUser(UserRequestDto requestDto) {
-        return userMapper
-                .entityToDto(userRepository
-                        .save(userMapper
-                                .dtoToEntity(requestDto)));
+        return userService.create(requestDto);
+    }
+
+    public UserResponseDto updateUser(UUID id, UserRequestDto requestDto) {
+        return userService.update(id, requestDto);
     }
 
 }

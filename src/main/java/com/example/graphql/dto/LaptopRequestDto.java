@@ -11,5 +11,6 @@ import java.util.UUID;
 @Setter
 public class LaptopRequestDto {
     private String name;
+    private float price;
     private UUID userId;
 }

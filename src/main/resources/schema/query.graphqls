@@ -1,7 +1,13 @@
 type Query {
+    # User
     userByName(name: String): UserResponseDto
     userById(id: ID): UserResponseDto
     usersByName(name: String): [UserResponseDto]
+    users: [UserResponseDto]
+
+    # Laptop
+    laptops: [LaptopResponseDto]
+    laptopById(id: ID): LaptopResponseDto
 }
 
 type UserResponseDto {
@@ -10,12 +16,13 @@ type UserResponseDto {
     surname: String
     fullName: String
     birthdate: Date
-    laptops(name: String): [LaptopResponseDto]
+    laptops(name: String): [LaptopResponseDto] # collection
 }
 
 type LaptopResponseDto {
     id: ID!
     name: String!
+    price: Float
     user: UserResponseDto
 }
 

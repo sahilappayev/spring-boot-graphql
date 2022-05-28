@@ -1,12 +1,24 @@
 type Mutation {
+    # User
     createUser(requestDto: UserRequestDto): UserResponseDto
+    updateUser(id: ID!, requestDto: UserRequestDto): UserResponseDto
+
+    # Laptop
+    createLaptop(requestDto: LaptopRequestDto): LaptopResponseDto
+    updateLaptop(id: ID!, requestDto: LaptopRequestDto): LaptopResponseDto
 }
 
 scalar Date
 
 input UserRequestDto {
-    name: String!
+    name: String! # required
     surname: String
     birthdate: Date
+}
+
+input LaptopRequestDto {
+    name: String!
+    price: Float
+    userId: ID!
 }
 

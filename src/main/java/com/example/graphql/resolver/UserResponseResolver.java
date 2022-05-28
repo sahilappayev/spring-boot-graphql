@@ -24,6 +24,7 @@ public class UserResponseResolver implements GraphQLResolver<UserResponseDto> {
         List<LaptopResponseDto> laptopResponseDtos = new ArrayList<>();
         if (userResponseDto.getUser().getLaptops() != null) {
             for (Laptop laptop : userResponseDto.getUser().getLaptops()) {
+                // GraphQL edge for filter data
                 if (name != null) {
                     if (laptop.getName().equalsIgnoreCase(name)) {
                         laptopResponseDtos.add(laptopMapper.entityToDto(laptop));

@@ -12,5 +12,6 @@ import java.util.UUID;
 public class LaptopResponseDto {
     private UUID id;
     private String name;
+    private float price;
     private UserResponseDto user;
 }
